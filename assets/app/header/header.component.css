@@ -1,0 +1,21 @@
+.navbar-brand{
+    display:inline-block;
+}
+
+.book{
+    font-family: cursive;
+    font-size:x-large;
+    font-weight: bolder
+}
+.ver {
+    border-left: 2px solid black;
+    height: 40px;
+}
+
+.login,.register,.home{
+    cursor: pointer;
+}
+
+.add1,.user1,.driver{
+    cursor: pointer;
+}

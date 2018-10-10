@@ -1,0 +1,9 @@
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
+
+
+body, html{
+    margin:0;
+    padding:0;
+}
+
+

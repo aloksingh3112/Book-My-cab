@@ -1,0 +1,184 @@
+<form (ngSubmit)='submit(f)' #f='ngForm'>
+    <div class="row mt-3">
+
+      <div class="col-md-1">
+
+      </div>
+      <div class="col-md-5">  
+            <h4>Driver Detail</h4>
+         <div class="form-group">
+            
+             <label for="firstname">First Name</label>
+             <input type="text" class='form-control' name='firstname' ngModel
+             #first='ngModel' required [(ngModel)]='firstN'>
+             <div class="alert alert-danger" *ngIf='first.invalid && first.touched'>
+                first name is required
+             </div>
+
+          </div>
+
+          <div class="form-group">
+              <label for='lastname'>Last Name</label>
+              <input type="text" class='form-control' name='lastname' ngModel required #last='ngModel' [(ngModel)]='lastN'>
+              <div class="alert-alert-danger" *ngIf='last.touched && last.invalid'>
+                  last name is required
+                  
+              </div>
+          </div>
+
+          <div class="form-group">
+                <label for='email'>Email</label>
+                <input type="email" class='form-control' name='email' ngModel
+                email required #email='ngModel' [(ngModel)]='emaiL'>
+                <div class='alert alert-danger' *ngIf='email.invalid && email.touched'>
+                    <p *ngIf='email.errors.required'> email is required</p>
+                    <p *ngIf='email.errors.email'> email is not valid</p>
+                  
+                </div>
+          </div>
+
+
+        <div class="form-group">
+                <label for='password'>Password</label>
+                <input type="password" class='form-control' name='password' ngModel
+                #pass='ngModel' required>
+                
+                <div class="alert alert-danger" *ngIf='pass.invalid && pass.touched'>
+                    password is required
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label for='contact'>Contact</label>
+                <input type="number" class='form-control' name='contact' ngModel required #contact='ngModel' min='10'  [(ngModel)]='contacT'>
+
+                <div class="alert alert-danger" *ngIf='contact.touched && contact.invalid'>
+                     <p *ngIf='contact.errors.required'>
+                        contact is required
+                     </p>
+
+                     <p *ngIf='contact.errors.min'>
+                            number should be of 10 digit
+                    </p>
+                </div>
+                
+        </div>
+
+
+        <div class="form-group">
+                <label for='address'>Address</label>
+                <textarea name="address" id="address" cols="7" rows="3" class='form-control' ngModel #address='ngModel' required
+                [(ngModel)]='addresS'>
+
+                </textarea>
+                <div class="alert alert-danger" *ngIf='address.touched && address.invalid'>
+                  address is required
+                </div>
+        </div>
+    <hr noshade>
+
+    <h4>Cab Details</h4>
+      
+
+    <div class='form-group'>
+      <label for="cartype">Select Car Type</label>
+      <select name="cartype" class='form-control' id='cartype' ngModel #select='ngModel' required [(ngModel)]='carT'>
+        <option value="mini">mini</option>
+        <option value="micro">micro</option>
+        <option value="primesedan">Prime Sedan</option>
+        <option value="primesuv">Prime SUV</option>
+      </select>
+
+      <div class="alert alert-danger" *ngIf='select.invalid && select.touched'>
+            Field is Required 
+      </div>
+     </div>
+
+        
+     <div class="form-group">
+                <label for='licenceno'>Licence Number</label>
+                <input type="text" class='form-control' name='licenceno' ngModel
+                #licence='ngModel'required [(ngModel)]='locenseN'>
+                <div class="alert alert-danger" *ngIf='licence.invalid && licence.touched'>
+                        Licence No. is Required 
+               </div>
+      </div>
+
+
+      <div class="form-group">
+            <label for='carname'>Car Name</label>
+            <input type="text" class='form-control' name='carname' ngModel required
+            #carName='ngModel' [(ngModel)]='carN'>
+
+            <div class="alert alert-danger" *ngIf='carName.invalid && carName.touched'>
+                    car name is Required 
+           </div>
+      </div>
+
+
+      <div class="form-group">
+            <label for='carmodel'>Car Model</label>
+            <input type="text" class='form-control' name='carmodel' ngModel #carModel='ngModel'  required [(ngModel)]='carM'>
+
+            <div class="alert alert-danger" *ngIf='carModel.invalid && carModel.touched'>
+                    car model is Required 
+            </div>
+      </div>
+      
+
+
+      <div class="form-group">
+           <button class='btn btn-primary' type='submit'>Save Details</button> 
+       </div>
+       
+       <div class="alert alert-success" *ngIf='successMessage'>
+           {{successMessage}}
+       </div>
+    
+       <div class="alert alert-danger" *ngIf='errorMessage'>
+           {{errorMessage}}
+       </div>
+
+
+
+      </div>
+
+   <!-- table of drivers -->
+
+      <div class="col-md-5 tableD">
+         <table class='table table-bordered'>
+         <thead>
+             <tr>
+                 <th>Name</th>
+                 <th>Email</th> 
+                 <th>Contact</th>
+                 <th>Edit</th>
+                 <th>Delete</th> 
+             </tr>
+         </thead>
+          <tbody>
+              <tr *ngFor='let driver of adminService.driverData'>
+                  <td>{{driver.firstname}}</td>
+                  <td>{{driver.email}}</td>
+                  <td>{{driver.contact}}</td>
+                  <td ><i class="far fa-edit mark1 ml-3" (click)='edit(driver)'></i></td>
+                  <td><i class="fas fa-trash-alt mark1 ml-4" (click)=delete(driver)></i></td>
+              </tr>
+          </tbody>
+
+         </table>
+
+
+      </div>
+      <div class="col-md-1">
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+</form>

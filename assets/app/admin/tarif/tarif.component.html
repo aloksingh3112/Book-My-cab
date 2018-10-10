@@ -1,0 +1,105 @@
+<form (ngSubmit)='tarif(f)' #f='ngForm'>
+<div class="row mt-4">
+ 
+  <div class="col-md-2">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Tarif Plan</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #close (click)='closeM()'>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label for="cartype">Select Car Type</label>
+            <select name="cartype" class='form-control' id='cartype' ngModel required #select='ngModel' [(ngModel)]='selects'>
+              <option value="mini">mini</option>
+              <option value="micro">micro</option>
+              <option value="primesedan">Prime Sedan</option>
+              <option value="primesuv">Prime SUV</option>
+            </select>
+            <div class="alert alert-danger" *ngIf='select.touched && select.invalid'> field is required</div>
+
+            <label for="normalhourrate">Normal Hour Rate</label>
+            <input type="number" class='form-control' name='normalhourrate' ngModel required #nt='ngModel' [(ngModel)]='normal'>
+            <div class="alert alert-danger" *ngIf='nt.touched && nt.invalid'> field is required</div>
+
+            <label for="peakhourrate">Peak Hour Rate</label>
+            <input type="number" class='form-control' name='peakhourrate'
+            ngModel required #pk='ngModel' [(ngModel)]='peak'>
+            <div class="alert alert-danger" *ngIf='pk.touched && pk.invalid'> field is required</div>
+            
+            <label for="startpeaktime">Start Peak Time</label>
+            <input type="time" class='form-control' name='startpeaktime'
+            ngModel required #st='ngModel'  [(ngModel)]='start'>
+            <div class="alert alert-danger" *ngIf='st.touched && st.invalid'> field is required</div>
+
+            <label for="endpeaktime">End Peak Time</label>
+            <input type="time" class='form-control' name='endpeaktime'
+            ngModel required #et='ngModel' [(ngModel)]='end'>
+            <div class="alert alert-danger" *ngIf='et.touched && et.invalid'> field is required</div>
+     
+            
+            
+           
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)='closeM()'>Close</button>
+            <button type="submit" class="btn btn-primary" [disabled]='f.invalid'>Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <div class="col-md-8">
+    <h2>Tarif Plans</h2>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" #tarifModel>
+      <i class="fas fa-plus mr-2"></i>AddTarifPlan
+    </button>
+    <hr noshade>
+    <br>
+    <table class='table table-bordered'>
+      <thead >
+        <tr>
+          <th>Car Type</th>
+          <th>Normal Hour Rate/KM </th>
+          <th>Peak Hour Rate/Km</th>
+          <th>Start Peak Time</th>
+          <th>End Peak Time</th>
+          <th>Edit</th>
+          <th>Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor='let tarif of adminService.tarifData'>
+          <td>{{tarif?.cartype}}</td>
+          <td> {{tarif?.normalhourrate}}</td>
+          <td>{{tarif?.peakhourrate}} </td>
+          <td> {{tarif?.startpeaktime}}</td>
+          <td> {{tarif?.endpeaktime}}</td>
+          <td ><i class="far fa-edit ml-1 edit "(click)=edit(tarif)></i></td>
+          <td> <i class="fas fa-trash-alt ml-1 delete" (click)='delete(tarif)'></i></td>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+
+
+
+
+  </div>
+  <div class="col-md-2"></div>
+
+
+
+</div>
+</form>

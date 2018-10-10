@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand book " >BookMyCab</a>
+    <div class='ver mr-2'></div>
+
+    <a class="navbar-brand home"><i class="fas fa-home"></i>Home</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item dropdown" *ngIf='appService.isAdmin'>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item add1" routerLink='/tarif'>Add Tarif</a>
+            <a class="dropdown-item add1" routerLink='/addcab'>Add Cab</a>
+         
+          </div>
+        </li>
+
+
+        <li class='nav-item active' *ngIf='appService.isUser'>
+           <a class='nav-link user1' routerLink='/bookcab'>Book Cab</a>
+        </li>
+
+        <li class='nav-item active' *ngIf='appService.isUser'>
+          <a class='nav-link user1' routerLink='/myride'>My Rides</a>
+       </li>
+
+
+
+       <li class='nav-item active' *ngIf='appService.isDriver'>
+        <a class='nav-link user1' routerLink='/driver'>Current Booking</a>
+       </li>
+
+      <li class='nav-item active' *ngIf='appService.isDriver'>
+       <a class='nav-link user1' routerLink='/driverride'>My Rides</a>
+      </li>
+       
+      </ul>
+      <div class=" my-2 my-lg-0">
+          <ul class="navbar nav mr-auto">
+            <li class="nav-item mr-3" ></li>
+
+            <li class="nav-item mr-3 register" *ngIf='appService.isLogin' (click)='logout()'><i class="fas fa-sign-out-alt"  ></i>Logout</li>
+
+            <li class="nav-item mr-3 login"
+            routerLink='/login' *ngIf='!appService.isLogin'><i class="fas fa-lock" ></i>Login</li>
+
+
+            <li class="nav-item mr-3 register"
+            routerLink='/signup' *ngIf='!appService.isLogin'><i class="fas fa-user"></i>Register</li>
+          </ul>
+      </div>
+    </div>
+  </nav>

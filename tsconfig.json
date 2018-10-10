@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types":[
+      "googlemaps"
+    ],
+
+    "lib": [
+      "es5",
+      "dom"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+.row1{
+    background-color: #F8AE4A
+}
+.cab{
+    font-family: cursive;
+    font-weight: bolder;
+    font-size: xx-large;
+    color:white;
+    font-style: oblique;
+
+}
+
+.carimage{
+    width: 60%;
+    height: 40%;
+    margin-left:5%;
+}
+
+.cab{
+    margin-left:4%;
+    margin-bottom: 10%;
+    transform: translateY(-30%)
+}
+
+.line{
+    display: inline-block;
+    border: 1px solid white;
+    background-color: white;
+    width: 30%;
+    height: 5px;
+    margin-left: 10%;
+    transform: translateY(-45px);
+
+}
+
+.star{
+    color: white;
+    margin-left: 2%;
+    transform:translateY(-55px);
+
+}
+
+.line2{
+    display: inline-block;
+    border: 1px solid white;
+    background-color: white;
+    width: 30%;
+    height: 5px;
+    margin-left:2%;
+    transform: translateY(-45px);
+}
+
+.bookbutton{
+    margin-left: 15%;
+    transform: translateY(-45px);
+    font-weight: bold;
+
+
+}
+
+.card{
+    border:1px solid wheat;
+}
+
+h6{
+    color:white;
+}
+
+.special{
+    width:50%;
+    height:50%;
+}
+
+.service{
+    width:60%;
+    height:60%;
+}
+
+.contact{
+    width:60%;
+    height:60%;
+}
+

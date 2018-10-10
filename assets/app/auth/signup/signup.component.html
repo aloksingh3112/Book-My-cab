@@ -1,0 +1,105 @@
+<div class="row mt-2">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+                <form (ngSubmit)='onSignup(form)' #form='ngForm'>
+
+                        <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" name='firstname' id="firstname" placeholder="Enter first name"
+                                        ngModel minlength="3" required #firstname='ngModel'>
+                                <div class="alert alert-danger" *ngIf='firstname.touched && firstname.invalid'>
+                                        <div *ngIf='firstname.errors.required'>First name is required </div>
+                                        <div *ngIf='firstname.errors.required'>Name should be of atleast 3</div>
+                                </div>
+                        </div>
+
+
+                        <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" placeholder="Enter last name"
+                                        name='lastname' ngModel required minlength="3" #lastname='ngModel'>
+                                <div class="alert alert-danger" *ngIf='lastname.invalid && lastname.touched'>
+                                        <div *ngIf='lastname.errors.required'>
+                                                lastname is required
+                                        </div>
+                                        <div *ngIf='lastname.errors.minlength'>
+                                                Name should be of atleast 3
+                                        </div>
+
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+                                        ngModel name='email' email required #email='ngModel'>
+                                <div class="alert alert-danger" *ngIf='email.invalid && email.touched'>
+                                        <div *ngIf='email.errors.required'>
+                                                email is required
+                                        </div>
+                                        <div *ngIf='email.errors.email'>
+                                                email is invalid
+                                        </div>
+
+                                </div>
+                        </div>
+
+
+                        <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                                        ngModel name='password' required minlength="5" #pass='ngModel'>
+                                <div class="alert alert-danger" *ngIf='pass.invalid && pass.touched'>
+                                        <div *ngIf='pass.errors.required'>
+                                                password is required
+                                        </div>
+                                        <div *ngIf='pass.errors.minlength'>
+                                                password should be of atleast 5
+                                        </div>
+
+                                </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="contact">Contact</label>
+                                <input type="number" class="form-control" id="contact" placeholder="Enter contact"
+                                        ngModel name='contact' required number minlength="10" #contact='ngModel'>
+
+                                <div class="alert alert-danger" *ngIf='contact.invalid && contact.touched'>
+                                        <div *ngIf='contact.errors.required'>
+                                                contact is required
+                                        </div>
+                                        <div *ngIf='contact.errors.minlength'>
+                                                contact is of length 10
+                                        </div>
+                                        <div *ngIf='contact.errors.number'>
+                                                        contact should be of number
+                                        </div>
+
+
+                                </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" [disabled]='form.invalid'
+                        >SignUp</button>
+
+                      <br> 
+                      <br>
+                      <div class="alert alert-success" *ngIf='successMessage' >
+                        {{successMessage}}
+                      </div> 
+                      <div class="alert alert-danger" *ngIf='errorMessage'
+                      > {{errorMessage}}
+                             </div>
+
+
+                </form>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+
+</div>

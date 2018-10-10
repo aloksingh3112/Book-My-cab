@@ -1,0 +1,49 @@
+<form (ngSubmit)='login(form)' #form='ngForm'>
+  <div class="row mt-2">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" ngModel name='email'
+          #email='ngModel' required email>
+        <div class="alert alert-danger" *ngIf='email.invalid && email.touched'>
+          <div *ngIf='email.errors.required'>
+            email is required
+          </div>
+          <div *ngIf='email.errors.email'>
+            email is invalid
+          </div>
+
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ngModel name='password'
+          required #pass='ngModel'>
+        <div class="alert alert-danger" *ngIf='pass.invalid && pass.touched'>
+          <div *ngIf='pass.errors.required'>
+            password is required
+          </div>
+
+
+        </div>
+      </div>
+
+      <button type='submit' class="btn btn-primary" [disabled]='form.invalid'>Login</button>
+
+      <br>
+      <div class="alert alert-danger" *ngIf='errorMessage'>
+        {{errorMessage}}
+      </div>
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+
+  </div>
+</form>
