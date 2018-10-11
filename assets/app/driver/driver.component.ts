@@ -1,5 +1,6 @@
+import { AppService } from './../app.service';
 import { UserService } from './../user.service';
-import { Component ,OnInit} from "@angular/core";
+import { Component ,OnInit, OnChanges, DoCheck} from "@angular/core";
 
 
 
@@ -9,19 +10,20 @@ import { Component ,OnInit} from "@angular/core";
     templateUrl:'./driver.component.html',
     styleUrls:['./driver.component.css']
 })
-export class DriverComponent implements OnInit{
+export class DriverComponent implements OnInit,DoCheck{
     
     lat:number;
     long:number ;
     zoom=4;
 
-    constructor(private userService:UserService){
+    constructor(private userService:UserService,public appService:AppService){
 
     }
 
     ngOnInit(){
-        console.log("star world");
+  
         this.setCurrentPosition();
+        this.appService.getUser();
       
     }
 

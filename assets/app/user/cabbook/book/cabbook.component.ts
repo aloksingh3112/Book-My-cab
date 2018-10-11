@@ -29,6 +29,7 @@ export class CabBookComponent implements OnInit {
   isEstimate:boolean=false;
   driverLat:number;
   driverLon:number;
+  @ViewChild('modalbutton') button:ElementRef
 
 
   @ViewChild("pickup")
@@ -155,7 +156,9 @@ export class CabBookComponent implements OnInit {
 
     console.log(form.value);
     console.log(this.appService.driverArray);
-    this.userService.emitUser(form.value);
+    form.value.distance=this.distance;
+    form.value.totalfare=this.totalfare;
+    this.userService.emitUser(form.value,this.button);
 
   }
 

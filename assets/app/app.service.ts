@@ -22,7 +22,19 @@ export class AppService{
     longitude;
     driverLat:number;
     driverLon:number;
-    driverArray=[];
+    driverArray:[]=[];
+
+    driverButtonData='Current Booking '
+    isBooked:boolean=false;
+
+    userPickuplocation:string;
+    userDestination:string;
+    username:string;
+    useremail:string;
+    totalFare:number;
+    // userArray=[];
+
+   
     
   
 
@@ -132,6 +144,39 @@ export class AppService{
         })
     }
 
+
+    emitUser(data){
+   
+      this.userSocket.emit('booking',data)
+
+
+    }
+
+    getUser(){
+        this.driverSocket.on('booking',(data)=>{
+            const token=localStorage.getItem('token');
+            const driver=jwt_decode(token);
+
+            if(driver.user.email==data.email){
+             this.userPickuplocation= data.ride.pickuplocation;
+             this.userDestination=data.ride.destination;
+             this.totalFare=data.ride.totalfare;
+             this.username=data.user.user.firstname+' '+data.user.user.lastname;
+             this.useremail=data.user.user.email;
+             this.totalFare=data.ride.totalfare;
+             this.driverButtonData="you got a Booking";
+             this.isBooked=true;
+             
+             
+              console.log("data is ",this.userPickuplocation);
+
+
+            }
+            
+        })
+    }
+
+   
 
    
 

@@ -14,7 +14,7 @@ var appRoutes = require('./routes/app');
 var authRoutes=require('./routes/auth');
 var userRoutes=require('./routes/user');
 
-mongoose.connect('mongodb://localhost/bookmycab',{useNewUrlParser:true});
+mongoose.connect('mongodb://localhost:27017/bookmycab',{useNewUrlParser:true});
 mongoose.connection
    .once('open',()=>console.log("connected"))
    .on('error',(error)=>{

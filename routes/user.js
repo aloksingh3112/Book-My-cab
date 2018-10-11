@@ -4,7 +4,7 @@ const User=require('../model/user');
 const UserDetail=require('../model/userdetail');
 const Ride=require('../model/ride');
 const mongoose=require('mongoose');
-
+const jwt=require('jsonwebtoken');
 const router=express.Router();
 
 
@@ -30,5 +30,8 @@ router.get('/tarif/:cartype',async (req,res)=>{
        })
    }
 })
+
+
+
 
 module.exports=router

@@ -53,6 +53,10 @@ io.on('connection', function(socket){
 
  socket.on('logout',function(data){
      io.sockets.emit('logout',data);
+ });
+
+ socket.on('booking',function(data){
+     io.sockets.emit('booking',data)
  })
 
 })

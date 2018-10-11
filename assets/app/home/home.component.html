@@ -29,7 +29,8 @@
 
             </div>
             <div class="col-md-3">
-                <button class='btn btn-default bookbutton'>Book Now</button>
+                <button class='btn btn-default bookbutton'
+                *ngIf='appService.isUser' routerLink="/bookcab"  >Book Now</button>
             </div>
             <div class="col-md-5">
 

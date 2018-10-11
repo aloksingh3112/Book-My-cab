@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { AppService } from './app.service';
 import { Http ,Headers,Response} from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -11,10 +12,23 @@ import 'rxjs/Rx';
 })
 export class UserService{
 
+  driverDestination:string;
+  driverPickup:string;
+  driverName:string;
+  driverContact:number;
+  totalfare:number;
+
+  userPickuplocation;
+  userDestination;
+  totalFare;   
+   username;
+  useremail;
 
   constructor(public http:Http,public appService:AppService){
 
   }
+
+  
 
 
   getTarif(cartype){
@@ -56,7 +70,7 @@ export class UserService{
 
 
 
-  emitUser(data){
+  emitUser(data,button:ElementRef){
 
     if(this.appService.driverArray.length>0){
          const index=this.appService.driverArray.findIndex(driver=>driver.user.driver[0].cartype==data.cartype);
@@ -65,10 +79,24 @@ export class UserService{
            return alert(`no ${data.cartype}  is available righ now`)
          }
          else{
+           const token=localStorage.getItem('token');
+           const user=jwt_decode(token);
+           this.driverDestination=data.destination;
+           this.driverPickup=data.pickuplocation;
+           this.totalfare=data.totalfare;
+           this.driverName=this.appService.driverArray[index].user.firstname+" "+this.appService.driverArray[index].user.lastname;
+           this.driverContact=this.appService.driverArray[index].user.contact;
+
+          let combineData={
+             user:user,
+             ride:data,
+             email:this.appService.driverArray[index].user.email
+          }
+           this.appService.emitUser(combineData);
+            button.nativeElement.click();
+
             
-          //  this.bookDriver(this.appService.driverArray[index].user.email);
-          return alert(`${data.cartype}  is available righ now`)
-         }
+            }
     }
     else{
       alert("no cab available ");
@@ -77,12 +105,6 @@ export class UserService{
   }
 
 
-  bookDriver(data){
-
-    const token=localStorage.getItem('token');
-    // this.http.post('http://localhost:3000/user/boookride',)
-
-
-  }
+  
 
 }
