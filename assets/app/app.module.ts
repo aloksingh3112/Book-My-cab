@@ -42,7 +42,7 @@ import {AgmDirectionModule} from 'agm-direction'
 
   AgmCoreModule.forRoot(
     {
-    apiKey:'AIzaSyC8ay7hEJmaDHpKb5Kh7q1smLpT47L6bZQ',
+    apiKey:'',
      libraries:['places','geometry']
     }
     ),
